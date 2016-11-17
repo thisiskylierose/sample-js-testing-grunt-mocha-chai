@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "devDependencies": {
     "chai": "~3.5.0",
-    "grunt": "latest",
+    "grunt": "1.0.1",
+    "grunt-contrib-connect": "1.0.2",
+    "grunt-contrib-watch": "1.0.0",
     "grunt-mocha": "~1.0.2",
     "grunt-mocha-browser": "0.0.5",
     "load-grunt-tasks": "3.5.2",

@@ -1,20 +1,40 @@
-module.exports = function(grunt){
-  grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+'use strict';
 
-    // Mocha
-    mocha: {
-      all: {
-        src: ['tests/testrunner.html'],
-      },
+module.exports = function (grunt) {
+  require('load-grunt-tasks')(grunt);
+  require('time-grunt')(grunt);
+
+  grunt.initConfig({
+    connect: {
+      server: {
+        options: {
+          hostname: 'localhost',
+          port: 8001,
+          base: [
+            'tests',
+            'node_modules'
+          ],
+          open: true,
+          livereload: true
+        }
+      }
+    },
+    watch: {
       options: {
-        run: true
+        livereload: true,
+        interval: 5007 // https://github.com/gruntjs/grunt-contrib-watch/issues/35#issuecomment-18508836
+      },
+      html: {
+        files: [
+          'tests/{,*/}*.html',
+          'tests/{,*/}*.js'
+        ]
       }
     }
   });
 
-  // Load grunt mocha task
-  grunt.loadNpmTasks('grunt-mocha');
-
-  grunt.registerTask('default', ['mocha']);
+  grunt.registerTask('serve', [
+    'connect',
+    'watch'
+  ]);
 };

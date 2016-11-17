@@ -30,8 +30,20 @@ module.exports = function (grunt) {
           'tests/{,*/}*.js'
         ]
       }
+    },
+    mocha: {
+      all: {
+        src: ['tests/phantom.html'],
+      },
+      options: {
+        run: true
+      }
     }
   });
+
+  grunt.registerTask('default', [
+    'mocha'
+  ]);
 
   grunt.registerTask('serve', [
     'connect',
